@@ -1,0 +1,58 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  z-index: 100;
+  background: linear-gradient(to bottom, rgba(8, 12, 28, 0.85), transparent);
+  backdrop-filter: blur(4px);
+}
+
+.brand {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 20px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.links {
+  display: flex;
+  gap: 4px;
+}
+
+.link {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 13px;
+  letter-spacing: 2.5px;
+  color: rgba(240, 232, 208, 0.72);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px 14px;
+  transition: color 0.25s;
+  position: relative;
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transform: translateX(-50%);
+  transition: width 0.25s;
+}
+
+.link:hover { color: var(--text-light); }
+.link:hover::after { width: 60%; }
+
+.link.active { color: var(--gold); }
+.link.active::after { width: 60%; }

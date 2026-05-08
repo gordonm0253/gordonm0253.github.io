@@ -1,0 +1,22 @@
+.wrap {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  transition: background 0.05s linear;
+}
+
+.layer {
+  position: absolute;
+  width: 100%;
+  will-change: transform;
+}
+
+/* Mountains flush to the bottom edge */
+.mtn { bottom: 0; }

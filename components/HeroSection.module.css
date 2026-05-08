@@ -1,0 +1,104 @@
+.section {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  transition: opacity 0.05s linear, transform 0.05s linear;
+  will-change: opacity, transform;
+  pointer-events: auto;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.nameBlock {
+  line-height: 0.9;
+  margin-bottom: 20px;
+}
+
+.firstName {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: clamp(52px, 7vw, 88px);
+  font-weight: 700;
+  color: var(--text-light);
+  letter-spacing: 6px;
+  margin: 0;
+}
+
+.lastName {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: clamp(52px, 7vw, 88px);
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 6px;
+  margin: 0;
+}
+
+.iconRow {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 20px;
+  pointer-events: auto;
+}
+
+.icon {
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(200, 168, 75, 0.35);
+  border-radius: 6px;
+  background: rgba(12, 20, 40, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+}
+
+.icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.icon:hover {
+  border-color: var(--gold);
+  background: rgba(200, 168, 75, 0.12);
+  transform: translateY(-2px);
+}
+
+.scrollHint {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: var(--gold-dim);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.arrow {
+  font-size: 14px;
+  color: var(--gold);
+  animation: bounce 1.8s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(6px); }
+}

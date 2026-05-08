@@ -1,0 +1,52 @@
+export const projects = [
+  {
+    id: 'meridian',
+    label: 'Meridian',
+    name: 'Meridian',
+    desc: 'Group trip planner using AI to scrape conversation history and generate full itineraries. Built at YHack 2026.',
+    tech: ['Next.js', 'TypeScript', 'MongoDB', 'Prisma', 'TailwindCSS'],
+    link: 'https://devpost.com/software/meridian-geqs1c',
+    linkLabel: 'Devpost ↗',
+    crystalColor: ['#3a7ab8', '#1a4a8a', '#6ab8f0', '#3a8fd4'],
+    featured: true,
+  },
+  {
+    id: 'guessr',
+    label: 'GUESSR',
+    name: 'Cornell Guessr',
+    desc: 'Cornell-themed GeoGuessr with React + TypeScript frontend, Google Maps API for interactive guessing, and Firebase for auth and stats.',
+    tech: ['React', 'TypeScript', 'Firebase', 'Maps API', 'Express.js'],
+    link: 'https://cornellguessr.vercel.app/',
+    linkLabel: 'Live site ↗',
+    crystalColor: ['#c84b4b', '#8a1a1a', '#e87070', '#c43030'],
+    featured: false,
+  },
+  {
+    id: 'cuttc',
+    label: 'CUTTC',
+    name: 'Cornell TTC',
+    desc: 'Full-stack website for the Cornell Table Tennis Club. Firebase auth, member management, and event listings.',
+    tech: ['React', 'Firebase', 'TailwindCSS', 'Express.js', 'Node.js'],
+    link: 'https://cuttc.vercel.app/',
+    linkLabel: 'Live site ↗',
+    crystalColor: ['#1a7a5a', '#0a4a3a', '#2ab88a', '#1a7a5a'],
+    featured: false,
+  },
+  {
+    id: 'critter',
+    label: 'CRITTER',
+    name: 'Critter World',
+    desc: 'Multithreaded simulation where programmable critters evolve on a hex grid — eating, fighting, and reproducing.',
+    tech: ['Java', 'JavaFX', 'Multithreading'],
+    link: null,
+    linkLabel: 'Private repo',
+    crystalColor: ['#5a4ab8', '#2a2a8a', '#8a70e8', '#5a50c4'],
+    featured: false,
+  },
+];
+
+export const social = {
+  github: 'https://github.com/gordonm0253',
+  linkedin: 'https://www.linkedin.com/in/gordon-mei/',
+  email: 'gam278@cornell.edu',
+};

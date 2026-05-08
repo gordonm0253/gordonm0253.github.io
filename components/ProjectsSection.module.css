@@ -1,0 +1,104 @@
+.section {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 72px 40px 40px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: opacity 0.05s linear, transform 0.05s linear;
+  will-change: opacity, transform;
+  pointer-events: auto;
+}
+
+.tag {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 8px;
+  letter-spacing: 5px;
+  color: rgba(200, 168, 75, 0.5);
+  margin-bottom: 10px;
+}
+
+.title {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 6px;
+  margin-bottom: 20px;
+}
+
+.row {
+  display: flex;
+  gap: 24px;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.hint {
+  margin-top: 28px;
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: rgba(200, 168, 75, 0.65);
+  animation: pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.55; }
+  50%       { opacity: 1; }
+}
+
+/* Ghost "more projects" card */
+.moreCard {
+  width: 215px;
+  height: 322px;
+  flex-shrink: 0;
+  border-radius: 7px;
+  border: 2px dashed rgba(200, 168, 75, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  text-decoration: none;
+  opacity: 0.55;
+  transition: opacity 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.moreCard:hover {
+  opacity: 1;
+  border-color: rgba(200, 168, 75, 0.55);
+  transform: translateY(-8px);
+}
+
+.moreIcon {
+  font-size: 28px;
+  color: rgba(200, 168, 75, 0.6);
+  line-height: 1;
+}
+
+.moreLabel {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 9px;
+  letter-spacing: 2.5px;
+  color: rgba(200, 168, 75, 0.6);
+  text-align: center;
+  line-height: 1.7;
+}
+
+.moreSub {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 7px;
+  letter-spacing: 1.5px;
+  color: rgba(200, 168, 75, 0.35);
+  text-align: center;
+}
