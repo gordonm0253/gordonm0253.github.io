@@ -1,55 +1,102 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import styles from './ProjectsSection.module.css';
 import NightMarketCard from './NightMarketCard';
 import { projects } from '@/lib/data';
+import type { Project } from '@/lib/data';
 
 interface Props {
   opacity: number;
   translateY: number;
+  scrollY: number;
+  onOverflowChange: (overflow: number) => void;
 }
 
-export default function ProjectsSection({ opacity, translateY }: Props) {
+function compareFeaturedProjects(a: Project, b: Project) {
+  if (a.featured === b.featured) {
+    return 0;
+  }
+
+  return a.featured ? -1 : 1;
+}
+
+export default function ProjectsSection({ opacity, translateY, scrollY, onOverflowChange }: Props) {
   const ref = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const ordered = useMemo(() => [...projects].sort(compareFeaturedProjects), []);
+  const [selectedName, setSelectedName] = useState(ordered[0]?.name);
+  const selected = ordered.find((p) => p.name === selectedName) ?? ordered[0];
 
   useEffect(() => {
     if (ref.current) {
       ref.current.style.opacity = String(opacity);
-      ref.current.style.transform = `translateY(${translateY}px)`;
+      ref.current.style.transform = `translateY(${translateY - scrollY}px)`;
+      ref.current.style.pointerEvents = opacity > 0.2 ? 'auto' : 'none';
     }
-  }, [opacity, translateY]);
+  }, [opacity, translateY, scrollY]);
 
-  // Put the featured card in the center
-  const sorted = [...projects].sort((a, b) =>
-    a.featured === b.featured ? 0 : a.featured ? -1 : 1
-  );
-  const centerIndex = sorted.findIndex(p => p.featured);
-  // Rearrange: left cards, center, right cards
-  const left  = sorted.slice(0, centerIndex);
-  const center = sorted[centerIndex];
-  const right = sorted.slice(centerIndex + 1);
-  const ordered = [...left, center, ...right];
+  useEffect(() => {
+    function measureOverflow() {
+      if (!contentRef.current) return;
+      const available = Math.max(0, window.innerHeight - 136);
+      const overflow = Math.max(0, contentRef.current.scrollHeight - available);
+      onOverflowChange(overflow);
+    }
+
+    measureOverflow();
+    window.addEventListener('resize', measureOverflow);
+    return () => window.removeEventListener('resize', measureOverflow);
+  }, [ordered.length, selectedName, onOverflowChange]);
 
   return (
     <section id="projects" className={styles.section}>
       <div ref={ref} className={styles.content}>
-        <h2 className={styles.title}>Projects</h2>
-        <p className={styles.tag}>Select a card to reveal</p>
+        <div ref={contentRef} className={styles.innerContent}>
+          <div className={styles.heading}>
+            <h2 className={styles.title}>Projects</h2>
+          </div>
 
-        <div className={styles.row}>
-          {ordered.map((p) => (
-            <NightMarketCard
-              key={p.id}
-              label={p.label}
-              name={p.name}
-              desc={p.desc}
-              tech={p.tech}
-              link={p.link}
-              linkLabel={p.linkLabel}
-              crystalColor={p.crystalColor}
-            />
-          ))}
+          <div className={styles.showcase}>
+            <article className={styles.featurePanel}>
+              <h3 className={styles.featureTitle}>{selected.name}</h3>
+              <p className={styles.featureDesc}>{selected.desc}</p>
+
+              <div className={styles.featureTech}>
+                {selected.tech.map((t) => (
+                  <span key={t}>{t}</span>
+                ))}
+              </div>
+
+              <div className={styles.featureActions}>
+                {selected.link ? (
+                  <a href={selected.link} target="_blank" rel="noopener noreferrer">
+                    {selected.linkLabel}
+                  </a>
+                ) : (
+                  <span>{selected.linkLabel}</span>
+                )}
+              </div>
+            </article>
+
+            <p className={styles.instructions}>Select a card to focus it. Click again to reveal details.</p>
+
+            <div className={styles.cardRail}>
+              {ordered.map((p) => (
+                <NightMarketCard
+                  key={p.name}
+                  label={p.name}
+                  name={p.name}
+                  desc={p.desc}
+                  tech={p.tech}
+                  crystalColor={p.crystalColor}
+                  featured={p.name === selected.name}
+                  active={p.name === selected.name}
+                  onSelect={() => setSelectedName(p.name)}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

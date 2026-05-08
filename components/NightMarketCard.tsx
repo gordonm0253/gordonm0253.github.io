@@ -4,42 +4,60 @@ import { useState } from 'react';
 import styles from './NightMarketCard.module.css';
 import CardFront from './CardFront';
 import CardBack from './CardBack';
+import type { CrystalColor } from '@/lib/projectColors';
 
 interface Props {
   label: string;
   name: string;
   desc: string;
   tech: string[];
-  link: string | null;
-  linkLabel: string;
-  crystalColor: string[];
+  crystalColor: CrystalColor;
   featured?: boolean;
+  active?: boolean;
+  onSelect?: () => void;
 }
 
 export default function NightMarketCard({
-  name, desc, tech, link, label, linkLabel, crystalColor, featured = false
+  name,
+  desc,
+  tech,
+  label,
+  crystalColor,
+  featured = false,
+  active = false,
+  onSelect,
 }: Props) {
   const [flipped, setFlipped] = useState(false);
 
+  const reveal = () => {
+    onSelect?.();
+    setFlipped((isFlipped) => !isFlipped);
+  };
+
+  const cardClassName = [
+    styles.card,
+    featured ? styles.featured : styles.side,
+    active ? styles.active : '',
+    flipped ? styles.flipped : '',
+  ].join(' ');
+
   return (
     <div
-      className={`${styles.card} ${featured ? styles.featured : styles.side} ${flipped ? styles.flipped : ''}`}
-      onClick={() => setFlipped(f => !f)}
+      className={cardClassName}
+      onClick={reveal}
       role="button"
       aria-label={`${name} — click to reveal`}
       tabIndex={0}
-      onKeyDown={(e) => e.key === 'Enter' && setFlipped(f => !f)}
+      onKeyDown={(e) => e.key === 'Enter' && reveal()}
     >
       <div className={styles.inner}>
-        <CardFront label={label} crystalColor={crystalColor} featured={featured} />
+        <CardFront label={label} crystalColor={crystalColor} featured={featured} active={active} />
         <CardBack
           name={name}
           desc={desc}
           tech={tech}
-          link={link}
-          linkLabel={linkLabel}
           featured={featured}
-        /> 
+        />
       </div>
     </div>
   );

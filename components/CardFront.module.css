@@ -14,27 +14,32 @@
   border-width: 2.5px;
 }
 
+.active {
+  box-shadow: 0 0 0 1px rgba(232, 200, 112, 0.4), 0 0 24px rgba(200, 168, 75, 0.18);
+}
+
 .corner {
   position: absolute;
   width: 13px;
   height: 13px;
   border: 1px solid var(--gold);
   border-radius: 2px;
-  z-index: 2;
+  z-index: 5;
 }
 .featured .corner { border-color: var(--gold-bright); }
 
 .tl { top: 8px;  left: 8px;  }
 .tr { top: 8px;  right: 8px; }
-.bl { bottom: 30px; left: 8px;  }
-.br { bottom: 30px; right: 8px; }
+.bl { bottom: 34px; left: 8px;  }
+.br { bottom: 34px; right: 8px; }
 
 .shards {
   position: absolute;
   inset: 0;
-  bottom: 30px;
+  bottom: 34px;
+  z-index: 1;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   gap: 8px;
   padding: 0 18px;
@@ -73,31 +78,8 @@
   transform: translateX(-50%);
   width: 60%;
   height: 50px;
+  z-index: 2;
   pointer-events: none;
-}
-
-.playWrap {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -62%);
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.45);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 3;
-}
-
-.playIcon {
-  width: 0;
-  height: 0;
-  border-top: 9px solid transparent;
-  border-bottom: 9px solid transparent;
-  border-left: 16px solid rgba(255, 255, 255, 0.82);
-  margin-left: 4px;
 }
 
 .label {
@@ -105,16 +87,31 @@
   bottom: 0;
   left: 0;
   right: 0;
+  z-index: 10;
+  min-height: 34px;
+  padding: 6px 8px;
   background: rgba(0, 0, 0, 0.82);
   font-family: 'Cinzel', Georgia, serif;
   font-size: 9px;
-  letter-spacing: 2.5px;
-  color: var(--gold);
-  text-align: center;
-  padding: 8px 0;
-  z-index: 3;
-}
-.featured .label {
+  line-height: 1.25;
+  letter-spacing: 1.8px;
   color: var(--gold-bright);
-  font-size: 10px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-wrap: anywhere;
+  text-shadow: 0 0 8px rgba(200, 168, 75, 0.28);
+}
+
+.active .label {
+  color: var(--gold-bright);
+}
+
+@media (max-width: 900px) {
+  .shards {
+    bottom: 28px;
+    gap: 6px;
+    padding: 0 14px;
+  }
 }

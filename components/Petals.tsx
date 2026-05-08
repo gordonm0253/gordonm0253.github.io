@@ -15,8 +15,8 @@ interface Petal {
 export default function Petals({ opacity }: { opacity: number }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const petalsRef = useRef<Petal[]>([]);
-  const frameRef  = useRef(0);
-  const rafRef    = useRef<number>(0);
+  const frameRef = useRef(0);
+  const rafRef = useRef<number>(0);
 
   useEffect(() => {
     petalsRef.current = Array.from({ length: 28 }, () => ({
@@ -33,7 +33,7 @@ export default function Petals({ opacity }: { opacity: number }) {
     const ctx = canvas.getContext('2d')!;
 
     function resize() {
-      canvas.width  = window.innerWidth;
+      canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     }
     resize();
@@ -44,7 +44,7 @@ export default function Petals({ opacity }: { opacity: number }) {
       frameRef.current += 0.017;
       const f = frameRef.current;
 
-      petalsRef.current.forEach(p => {
+      petalsRef.current.forEach((p) => {
         const wx = Math.sin(f * p.ws + p.wobble) * 20;
         const wy = Math.cos(f * p.ws * 0.7 + p.wobble) * 10;
         const py = ((p.y - f * p.speed * 0.6 * 60 + canvas.height * 4) % canvas.height);

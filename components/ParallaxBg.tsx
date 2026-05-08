@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from 'react';
 import styles from './ParallaxBg.module.css';
+import { getScrollLength } from '@/lib/scroll';
+import { easeInOutQuad, lerpRgb } from '@/lib/animation';
 
 interface Props {
   scrollY: number;
@@ -9,36 +11,36 @@ interface Props {
 
 export default function ParallaxBg({ scrollY }: Props) {
   const mtnRef = useRef<HTMLDivElement>(null);
-  const bgRef  = useRef<HTMLDivElement>(null);
+  const bgRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const vh = window.innerHeight;
-    const TOTAL = vh * 5; // must match page.tsx
+    const TOTAL = getScrollLength();
     const r = Math.min(scrollY / TOTAL, 1);
 
-    function lerp(a: number, b: number, t: number) { return a + (b - a) * t; }
-    function eio(t: number) { return t < 0.5 ? 2*t*t : 1 - Math.pow(-2*t+2,2)/2; }
-    function lc(c1: number[], c2: number[], t: number) {
-      return `rgb(${Math.round(lerp(c1[0],c2[0],t))},${Math.round(lerp(c1[1],c2[1],t))},${Math.round(lerp(c1[2],c2[2],t))})`;
-    }
+    let top: string;
+    let bot: string;
 
-    let top: string, bot: string;
     if (r < 0.22) {
-      const t = eio(r / 0.22);
-      top = lc([228,150,172],[14,9,42], t);
-      bot = lc([98,45,115],[7,5,24], t);
+      const t = easeInOutQuad(r / 0.22);
+      top = lerpRgb([228, 150, 172], [14, 9, 42], t);
+      bot = lerpRgb([98, 45, 115], [7, 5, 24], t);
     } else if (r < 0.50) {
-      const t = eio((r - 0.22) / 0.28);
-      top = lc([14,9,42],[5,9,22], t);
-      bot = lc([7,5,24],[3,4,13], t);
+      const t = easeInOutQuad((r - 0.22) / 0.28);
+      top = lerpRgb([14, 9, 42], [5, 9, 22], t);
+      bot = lerpRgb([7, 5, 24], [3, 4, 13], t);
     } else {
-      const t = eio((r - 0.50) / 0.50);
-      top = lc([5,9,22],[4,7,20], t);
-      bot = lc([3,4,13],[2,3,11], t);
+      const t = easeInOutQuad((r - 0.50) / 0.50);
+      top = lerpRgb([5, 9, 22], [4, 7, 20], t);
+      bot = lerpRgb([3, 4, 13], [2, 3, 11], t);
     }
 
-    if (bgRef.current)  bgRef.current.style.background = `linear-gradient(to bottom, ${top}, ${bot})`;
-    if (mtnRef.current) mtnRef.current.style.transform = `translateY(${scrollY * 0.04}px)`;
+    if (bgRef.current) {
+      bgRef.current.style.background = `linear-gradient(to bottom, ${top}, ${bot})`;
+    }
+
+    if (mtnRef.current) {
+      mtnRef.current.style.transform = `translateY(${scrollY * 0.04}px)`;
+    }
   }, [scrollY]);
 
   return (
@@ -46,14 +48,21 @@ export default function ParallaxBg({ scrollY }: Props) {
       <div ref={bgRef} className={styles.bg} />
 
       <div ref={mtnRef} className={`${styles.layer} ${styles.mtn}`}>
-        <svg width="100%" height="280" viewBox="0 0 1440 280" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-          <polygon points="0,280 210,58 440,280"        fill="#2a1e40"/>
-          <polygon points="180,280 510,18 840,280"      fill="#3a2858"/>
-          <polygon points="580,280 860,62 1140,280"     fill="#2a1e40"/>
-          <polygon points="900,280 1200,28 1440,148 1440,280" fill="#3a2858"/>
-          <polygon points="0,280 145,98 340,280"        fill="#472f68" opacity="0.85"/>
-          <polygon points="300,280 520,122 740,280"     fill="#3d2660" opacity="0.9"/>
-          <polygon points="1100,280 1340,72 1440,280"   fill="#472f68" opacity="0.8"/>
+        <svg viewBox="0 0 1440 300" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path
+            d="M0 300V246L150 118L290 246L510 42L725 244L875 126L1045 248L1215 56L1440 170V300Z"
+            fill="#241b38"
+          />
+          <path
+            d="M0 300V268L130 172L260 264L520 112L748 268L962 154L1130 264L1346 92L1440 266V300Z"
+            fill="#34234f"
+            opacity="0.88"
+          />
+          <path
+            d="M0 300V282L170 202L330 280L560 162L785 282L1010 198L1165 280L1325 168L1440 278V300Z"
+            fill="#432b63"
+            opacity="0.78"
+          />
         </svg>
       </div>
     </div>

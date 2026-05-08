@@ -19,4 +19,12 @@
 }
 
 /* Mountains flush to the bottom edge */
-.mtn { bottom: 0; }
+.mtn {
+  bottom: -1px;
+}
+
+.mtn svg {
+  display: block;
+  width: 100%;
+  height: clamp(180px, 28vh, 300px);
+}

@@ -3,6 +3,7 @@
   cursor: pointer;
   flex-shrink: 0;
   transition: transform 0.3s ease;
+  outline: none;
 }
 
 .card:hover {
@@ -13,19 +14,27 @@
   transform: translateY(-5px);
 }
 
+.card:focus-visible {
+  transform: translateY(-5px);
+}
+
 /* All cards are now the same base size */
 .featured {
-  width: 280px;
-  height: 420px;
+  width: 100%;
+  height: 230px;
 }
 
 .side {
-  width: 280px;
-  height: 420px;
+  width: 100%;
+  height: 230px;
   opacity: 0.85;
 }
 
 .side:hover {
+  opacity: 1;
+}
+
+.active {
   opacity: 1;
 }
 
@@ -39,4 +48,18 @@
 
 .flipped .inner {
   transform: rotateY(180deg);
+}
+
+@media (max-width: 900px) {
+  .featured,
+  .side {
+    height: 220px;
+  }
+}
+
+@media (max-width: 560px) {
+  .featured,
+  .side {
+    height: 205px;
+  }
 }

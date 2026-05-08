@@ -2,9 +2,9 @@
   position: fixed;
   inset: 0;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 72px 40px 40px;
+  padding: 112px 40px 24px;
   z-index: 10;
   pointer-events: none;
 }
@@ -13,17 +13,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: min(980px, calc(100vw - 64px));
   transition: opacity 0.05s linear, transform 0.05s linear;
   will-change: opacity, transform;
   pointer-events: auto;
 }
 
-.tag {
-  font-family: 'Cinzel', Georgia, serif;
-  font-size: 8px;
-  letter-spacing: 5px;
-  color: rgba(200, 168, 75, 0.5);
-  margin-bottom: 10px;
+.innerContent {
+  width: 100%;
+  padding-bottom: 32px;
+}
+
+.heading {
+  text-align: center;
+  margin-bottom: 12px;
 }
 
 .title {
@@ -32,73 +35,182 @@
   font-weight: 700;
   color: var(--gold);
   letter-spacing: 6px;
-  margin-bottom: 20px;
+  margin-bottom: 0;
 }
 
-.row {
-  display: flex;
-  gap: 24px;
-  align-items: flex-end;
-  justify-content: center;
+.showcase {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "feature"
+    "instructions"
+    "cards";
+  gap: 10px;
 }
 
-.hint {
-  margin-top: 28px;
-  font-family: 'Cinzel', Georgia, serif;
-  font-size: 11px;
-  letter-spacing: 3px;
-  color: rgba(200, 168, 75, 0.65);
-  animation: pulse 2.5s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 0.55; }
-  50%       { opacity: 1; }
-}
-
-/* Ghost "more projects" card */
-.moreCard {
-  width: 215px;
-  height: 322px;
-  flex-shrink: 0;
-  border-radius: 7px;
-  border: 2px dashed rgba(200, 168, 75, 0.25);
+.featurePanel {
+  grid-area: feature;
+  min-height: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  gap: 14px;
+  border: 1px solid rgba(200, 168, 75, 0.35);
+  border-left: 2px solid var(--gold);
+  border-radius: 6px;
+  background:
+    radial-gradient(circle at 20% 18%, rgba(200, 168, 75, 0.12), transparent 34%),
+    rgba(8, 14, 32, 0.88);
+  padding: 18px 22px;
+}
+
+.featureTitle {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: clamp(22px, 2.5vw, 34px);
+  line-height: 1.18;
+  font-weight: 600;
+  color: var(--gold-bright);
+  margin-bottom: 10px;
+}
+
+.featureDesc {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgba(240, 232, 208, 0.78);
+}
+
+.featureTech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.featureTech span {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 8px;
+  letter-spacing: 0.8px;
+  color: rgba(138, 180, 212, 0.9);
+  border: 1px solid rgba(138, 180, 212, 0.28);
+  border-radius: 8px;
+  padding: 4px 8px;
+}
+
+.featureActions {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(200, 168, 75, 0.18);
+}
+
+.featureActions a,
+.featureActions span {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+}
+
+.featureActions a {
+  color: var(--gold-bright);
   text-decoration: none;
-  opacity: 0.55;
-  transition: opacity 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
-  cursor: pointer;
+  border-bottom: 1px solid rgba(232, 200, 112, 0.35);
 }
 
-.moreCard:hover {
-  opacity: 1;
-  border-color: rgba(200, 168, 75, 0.55);
-  transform: translateY(-8px);
+.featureActions a:hover {
+  color: #fff;
+  border-color: var(--gold-bright);
 }
 
-.moreIcon {
-  font-size: 28px;
-  color: rgba(200, 168, 75, 0.6);
-  line-height: 1;
+.featureActions span {
+  color: rgba(200, 168, 75, 0.38);
 }
 
-.moreLabel {
+.instructions {
+  grid-area: instructions;
   font-family: 'Cinzel', Georgia, serif;
   font-size: 9px;
-  letter-spacing: 2.5px;
-  color: rgba(200, 168, 75, 0.6);
+  letter-spacing: 2px;
+  color: rgba(200, 168, 75, 0.62);
   text-align: center;
-  line-height: 1.7;
+  margin: 0;
 }
 
-.moreSub {
-  font-family: 'Cinzel', Georgia, serif;
-  font-size: 7px;
-  letter-spacing: 1.5px;
-  color: rgba(200, 168, 75, 0.35);
-  text-align: center;
+.cardRail {
+  grid-area: cards;
+  min-width: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 12px;
+  align-items: stretch;
+  padding: 2px;
+}
+
+.cardRail > * {
+  min-width: 0;
+}
+
+@media (max-width: 900px) {
+  .section {
+    padding: 96px 22px 24px;
+  }
+
+  .content {
+    width: min(680px, calc(100vw - 32px));
+  }
+
+  .heading {
+    margin-bottom: 12px;
+  }
+
+  .showcase {
+    gap: 14px;
+  }
+
+  .featurePanel {
+    min-height: 0;
+    padding: 16px 18px;
+  }
+
+  .featureTitle {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .featureDesc {
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  .instructions {
+    font-size: 8px;
+    letter-spacing: 1.6px;
+  }
+
+  .cardRail {
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .title {
+    font-size: 28px;
+    letter-spacing: 4px;
+  }
+
+  .showcase {
+    gap: 12px;
+  }
+
+  .featureTitle {
+    font-size: 22px;
+  }
+
+  .featureTech span {
+    font-size: 7px;
+  }
+
+  .cardRail {
+    grid-template-columns: 1fr;
+  }
 }

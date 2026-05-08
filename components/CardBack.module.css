@@ -7,7 +7,7 @@
   transform: rotateY(180deg);
   background: #080e20;
   border: 2px solid var(--gold);
-  padding: 20px 18px;
+  padding: 18px 16px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -17,29 +17,28 @@
   border-color: var(--gold-bright);
 }
 
-.tag {
-  font-family: 'Cinzel', Georgia, serif;
-  font-size: 8px;
-  letter-spacing: 2px;
-  color: #4a80b8;
-  margin-bottom: 7px;
-}
-
 .name {
   font-family: 'Cinzel', Georgia, serif;
-  font-size: 16px;
+  font-size: 15px;
   color: var(--gold-bright);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   line-height: 1.2;
   font-weight: 400;
 }
 
 .desc {
   font-family: 'Crimson Pro', Georgia, serif;
-  font-size: 14px;
+  font-size: 13px;
   color: #7aaad4;
-  line-height: 1.7;
+  line-height: 1.5;
   flex: 1;
+  min-height: 0;
+  overflow: auto;
+  scrollbar-width: none;
+}
+
+.desc::-webkit-scrollbar {
+  display: none;
 }
 
 .tech {
@@ -57,37 +56,4 @@
   border: 1px solid rgba(74, 112, 168, 0.35);
   border-radius: 8px;
   padding: 3px 8px;
-}
-
-.stars {
-  font-size: 13px;
-  color: var(--gold);
-  margin-top: 10px;
-  letter-spacing: 1px;
-}
-
-.linkRow {
-  margin-top: 10px;
-  padding-top: 10px;
-  border-top: 1px solid rgba(200, 168, 75, 0.18);
-}
-
-.link {
-  font-family: 'Cinzel', Georgia, serif;
-  font-size: 9px;
-  letter-spacing: 1px;
-  color: var(--gold);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.link:hover {
-  color: var(--gold-bright);
-}
-
-.noLink {
-  font-family: 'Cinzel', Georgia, serif;
-  font-size: 9px;
-  letter-spacing: 1px;
-  color: rgba(200, 168, 75, 0.3);
 }
