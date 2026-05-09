@@ -45,13 +45,21 @@ const projectData: Project[] = [
     featured: false,
   },
   {
-    name: 'napify',
-    desc: 'Beli-like app for Cornell campus nap spots. Creating during Spring26 AppDev Hack Challenge.',
+    name: 'Napify',
+    desc: 'Beli-like app for Cornell campus nap spots. Created during Spring26 AppDev Hack Challenge.',
     tech: ['Swift', 'Python', 'Flask', 'SQLAlchemy'],
     link: 'https://github.com/gordonm0253/napify',
     linkLabel: 'Github ↗',
     featured: false,
   },
+  {
+    name: "GD Visualizer",
+    desc: "Visualizer for different gradient descent methods, such as SGD, SGD w/ momentum, and Adam.",
+    tech: ["JavaScript", "HTML/CSS"],
+    link: "https://gordonm0253.github.io/optimization-demo/",
+    linkLabel: "Demo ↗",
+    featured: false
+  }
 ];
 
 export const projects = projectData
