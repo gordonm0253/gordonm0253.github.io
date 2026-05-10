@@ -4,7 +4,7 @@
   border-radius: 7px;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  transform: rotateY(180deg);
+  transform: rotateY(180deg) translateZ(1px);
   background: #080e20;
   border: 2px solid var(--gold);
   padding: 18px 16px;

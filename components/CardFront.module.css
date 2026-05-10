@@ -4,6 +4,7 @@
   border-radius: 7px;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  transform: rotateY(0deg) translateZ(1px);
   background: #0c1428;
   border: 2px solid var(--gold);
   overflow: hidden;

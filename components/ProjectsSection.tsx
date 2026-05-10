@@ -63,7 +63,7 @@ export default function ProjectsSection({ opacity, translateY, scrollY, onOverfl
   useEffect(() => {
     function measureOverflow() {
       if (!contentRef.current) return;
-      const available = Math.max(0, window.innerHeight - 136);
+      const available = Math.max(0, window.innerHeight - 160);
       const overflow = Math.max(0, contentRef.current.scrollHeight - available);
       onOverflowChange(overflow);
     }
