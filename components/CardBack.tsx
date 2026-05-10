@@ -7,7 +7,12 @@ interface Props {
   featured: boolean;
 }
 
-export default function CardBack({ name, desc, tech, featured }: Props) {
+export default function CardBack({
+  name,
+  desc,
+  tech,
+  featured,
+}: Props) {
   return (
     <div className={`${styles.back} ${featured ? styles.featured : ''}`}>
       <h3 className={styles.name}>{name}</h3>

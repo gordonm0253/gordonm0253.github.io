@@ -4,9 +4,11 @@ import type { CrystalColor } from './projectColors';
 export type Project = {
   name: string;
   desc: string;
+  longDesc: string;
   tech: string[];
-  link: string | null;
-  linkLabel: string;
+  demoLink?: string;
+  demoLabel?: string;
+  githubLink?: string;
   crystalColor?: CrystalColor;
   featured: boolean;
 };
@@ -15,49 +17,53 @@ const projectData: Project[] = [
   {
     name: 'Meridian',
     desc: 'Group trip planner that uses AI to scrape conversation history and generate full itineraries. Built at Yale Hacks 2026.',
+    longDesc: 'Group trip planner that uses AI to scrape conversation history and generate full itineraries. Built at Yale Hacks 2026.',
     tech: ['Next.js', 'TypeScript', 'MongoDB', 'Prisma', 'TailwindCSS'],
-    link: 'https://devpost.com/software/meridian-geqs1c',
-    linkLabel: 'Devpost ↗',
+    demoLink: 'https://devpost.com/software/meridian-geqs1c',
+    demoLabel: 'Devpost',
     featured: true,
   },
   {
     name: 'Cornell Guessr',
     desc: 'Cornell-themed GeoGuessr with React TypeScript frontend, Google Maps API for interactive guessing, and Firebase for auth and stats.',
-    tech: ['React', 'TypeScript', 'Firebase', 'Maps API', 'Express.js'],
-    link: 'https://cornellguessr.vercel.app/',
-    linkLabel: 'Live site ↗',
+    longDesc: 'Cornell-themed GeoGuessr with React TypeScript frontend, Google Maps API for interactive guessing, and Firebase for auth and stats.',
+    tech: ['React', 'TypeScript', 'Firebase', 'Google Maps API', 'Express.js'],
+    demoLink: 'https://cornellguessr.vercel.app/',
+    demoLabel: 'Live site',
+    githubLink: "https://github.com/gordonm0253/cuttc",
     featured: false,
   },
   {
     name: 'Cornell Table Tennis',
     desc: 'Full-stack website for the Cornell Table Tennis Club. Firebase auth, member management, and event listings.',
+    longDesc: 'Full-stack website for the Cornell Table Tennis Club. Firebase auth, member management, and event listings.',
     tech: ['React.js', 'Firebase', 'TailwindCSS', 'Express.js', 'Node.js'],
-    link: 'https://cuttc.vercel.app/',
-    linkLabel: 'Live site ↗',
+    demoLink: 'https://cuttc.vercel.app/',
+    demoLabel: 'Live site',
     featured: false,
   },
   {
     name: 'Critter World',
     desc: 'Multithreaded simulation where programmable critters eat, fighting, and evolve on a hex grid.',
+    longDesc: 'Multithreaded simulation where programmable critters eat, fighting, and evolve on a hex grid.',
     tech: ['Java', 'JavaFX'],
-    link: null,
-    linkLabel: 'Repo coming soon...',
     featured: false,
   },
   {
     name: 'Napify',
     desc: 'Beli-like app for Cornell campus nap spots. Created during Spring26 AppDev Hack Challenge.',
+    longDesc: 'Beli-like app for Cornell campus nap spots. Created during Spring26 AppDev Hack Challenge.',
     tech: ['Swift', 'Python', 'Flask', 'SQLAlchemy'],
-    link: 'https://github.com/gordonm0253/napify',
-    linkLabel: 'Github ↗',
+    githubLink: 'https://github.com/gordonm0253/napify',
     featured: false,
   },
   {
     name: "GD Visualizer",
     desc: "Visualizer for different gradient descent methods, such as SGD, SGD w/ momentum, and Adam.",
+    longDesc: "Visualizer for different gradient descent methods, such as SGD, SGD w/ momentum, and Adam.",
     tech: ["JavaScript", "HTML/CSS"],
-    link: "https://gordonm0253.github.io/optimization-demo/",
-    linkLabel: "Demo ↗",
+    demoLink: "https://gordonm0253.github.io/optimization-demo/",
+    demoLabel: "Live Site",
     featured: false
   }
 ];

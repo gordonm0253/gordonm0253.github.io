@@ -21,12 +21,36 @@ function compareFeaturedProjects(a: Project, b: Project) {
   return a.featured ? -1 : 1;
 }
 
+function ActionLink({
+  href,
+  label,
+  disabled = false,
+}: {
+  href?: string;
+  label: string;
+  disabled?: boolean;
+}) {
+  if (disabled || !href) {
+    return <span className={`${styles.actionButton} ${styles.actionButtonDisabled}`}>{label}</span>;
+  }
+
+  return (
+    <a className={styles.actionButton} href={href} target="_blank" rel="noopener noreferrer">
+      {label} ↗
+    </a>
+  );
+}
+
 export default function ProjectsSection({ opacity, translateY, scrollY, onOverflowChange }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const ordered = useMemo(() => [...projects].sort(compareFeaturedProjects), []);
   const [selectedName, setSelectedName] = useState(ordered[0]?.name);
   const selected = ordered.find((p) => p.name === selectedName) ?? ordered[0];
+  const selectedActions = [
+    selected.demoLink ? { href: selected.demoLink, label: selected.demoLabel ?? 'Demo' } : null,
+    selected.githubLink ? { href: selected.githubLink, label: 'Github' } : null,
+  ].filter((action): action is { href: string; label: string } => action !== null);
 
   useEffect(() => {
     if (ref.current) {
@@ -60,7 +84,7 @@ export default function ProjectsSection({ opacity, translateY, scrollY, onOverfl
           <div className={styles.showcase}>
             <article className={styles.featurePanel}>
               <h3 className={styles.featureTitle}>{selected.name}</h3>
-              <p className={styles.featureDesc}>{selected.desc}</p>
+              <p className={styles.featureDesc}>{selected.longDesc}</p>
 
               <div className={styles.featureTech}>
                 {selected.tech.map((t) => (
@@ -69,12 +93,12 @@ export default function ProjectsSection({ opacity, translateY, scrollY, onOverfl
               </div>
 
               <div className={styles.featureActions}>
-                {selected.link ? (
-                  <a href={selected.link} target="_blank" rel="noopener noreferrer">
-                    {selected.linkLabel}
-                  </a>
+                {selectedActions.length > 0 ? (
+                  selectedActions.map((action) => (
+                    <ActionLink key={action.href} href={action.href} label={action.label} />
+                  ))
                 ) : (
-                  <span>{selected.linkLabel}</span>
+                  <ActionLink label="Coming soon" disabled />
                 )}
               </div>
             </article>
