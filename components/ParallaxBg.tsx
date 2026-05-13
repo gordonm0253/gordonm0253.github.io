@@ -22,16 +22,16 @@ export default function ParallaxBg({ scrollY }: Props) {
 
     if (r < 0.22) {
       const t = easeInOutQuad(r / 0.22);
-      top = lerpRgb([228, 150, 172], [14, 9, 42], t);
-      bot = lerpRgb([98, 45, 115], [7, 5, 24], t);
+      top = lerpRgb([142, 150, 160], [72, 80, 92], t);
+      bot = lerpRgb([58, 66, 78], [34, 40, 50], t);
     } else if (r < 0.50) {
       const t = easeInOutQuad((r - 0.22) / 0.28);
-      top = lerpRgb([14, 9, 42], [5, 9, 22], t);
-      bot = lerpRgb([7, 5, 24], [3, 4, 13], t);
+      top = lerpRgb([72, 80, 92], [40, 47, 58], t);
+      bot = lerpRgb([34, 40, 50], [22, 27, 36], t);
     } else {
       const t = easeInOutQuad((r - 0.50) / 0.50);
-      top = lerpRgb([5, 9, 22], [4, 7, 20], t);
-      bot = lerpRgb([3, 4, 13], [2, 3, 11], t);
+      top = lerpRgb([40, 47, 58], [30, 36, 46], t);
+      bot = lerpRgb([22, 27, 36], [16, 20, 28], t);
     }
 
     if (bgRef.current) {
@@ -51,16 +51,16 @@ export default function ParallaxBg({ scrollY }: Props) {
         <svg viewBox="0 0 1440 300" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path
             d="M0 300V246L150 118L290 246L510 42L725 244L875 126L1045 248L1215 56L1440 170V300Z"
-            fill="#241b38"
+            fill="#202836"
           />
           <path
             d="M0 300V268L130 172L260 264L520 112L748 268L962 154L1130 264L1346 92L1440 266V300Z"
-            fill="#34234f"
+            fill="#303948"
             opacity="0.88"
           />
           <path
             d="M0 300V282L170 202L330 280L560 162L785 282L1010 198L1165 280L1325 168L1440 278V300Z"
-            fill="#432b63"
+            fill="#424b5a"
             opacity="0.78"
           />
         </svg>

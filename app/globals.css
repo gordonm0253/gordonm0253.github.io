@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap');
 
 :root {
-  --gold: #A8872E;
-  --gold-bright: #e8c870;
-  --gold-dim: #8a6820;
-  --gold-faint: rgba(200, 168, 75, 0.15);
+  --gold: #c9a64a;
+  --gold-bright: #ffe08a;
+  --gold-dim: #9f7d2e;
+  --gold-faint: rgba(216, 181, 82, 0.18);
   --blue-crystal: #4fa8e8;
   --blue-deep: #1a4a8a;
   --navy: #080c1c;
