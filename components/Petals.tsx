@@ -19,6 +19,12 @@ export default function Petals({ opacity }: { opacity: number }) {
   const rafRef = useRef<number>(0);
 
   useEffect(() => {
+    const palette = [
+      'rgba(182,190,199,',
+      'rgba(132,143,156,',
+      'rgba(216,181,82,',
+    ];
+
     petalsRef.current = Array.from({ length: 28 }, () => ({
       x: Math.random() * window.innerWidth,
       y: Math.random() * window.innerHeight,
@@ -26,7 +32,7 @@ export default function Petals({ opacity }: { opacity: number }) {
       speed: 0.35 + Math.random() * 0.5,
       wobble: Math.random() * Math.PI * 2,
       ws: 0.3 + Math.random() * 0.5,
-      col: Math.random() > 0.5 ? 'rgba(220,130,155,' : 'rgba(170,100,200,',
+      col: palette[Math.floor(Math.random() * palette.length)],
     }));
 
     const canvas = canvasRef.current!;
