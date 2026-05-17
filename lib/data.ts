@@ -78,13 +78,13 @@ const projectData: Project[] = [
 ];
 
 export const projects = projectData
-  .map((project) => ({
-    ...project,
-    crystalColor: project.crystalColor ?? getProjectCrystalColor(project.name),
-  }))
   .filter((project, index, allProjects) => (
     allProjects.findIndex((candidate) => candidate.name === project.name) === index
-  ));
+  ))
+  .map((project, index) => ({
+    ...project,
+    crystalColor: project.crystalColor ?? getProjectCrystalColor(index),
+  }));
 
 export const social = {
   github: 'https://github.com/gordonm0253',

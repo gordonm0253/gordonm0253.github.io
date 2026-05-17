@@ -11,14 +11,6 @@ const PALETTES: readonly CrystalColor[] = [
   ['#2f8a96', '#165260', '#62d0dc', '#2c9cad'],
 ] as const;
 
-function hashText(text: string) {
-  let hash = 0;
-  for (let i = 0; i < text.length; i += 1) {
-    hash = (hash * 31 + text.charCodeAt(i)) >>> 0;
-  }
-  return hash;
-}
-
-export function getProjectCrystalColor(seed: string): CrystalColor {
-  return PALETTES[hashText(seed) % PALETTES.length];
+export function getProjectCrystalColor(index: number): CrystalColor {
+  return PALETTES[index % PALETTES.length];
 }

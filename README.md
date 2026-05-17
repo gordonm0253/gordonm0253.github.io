@@ -1,0 +1,1 @@
+Portfolio website made with TypeScript, CSS, and HTML. Last updated May 2026.
