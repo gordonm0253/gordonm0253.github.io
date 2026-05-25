@@ -31,11 +31,11 @@
 }
 
 .side:hover {
-  filter: brightness(1.08);
+  box-shadow: 0 0 0 1px rgba(232, 200, 112, 0.22), 0 18px 34px rgba(0, 0, 0, 0.22);
 }
 
 .active {
-  filter: brightness(1.05);
+  box-shadow: 0 0 0 1px rgba(232, 200, 112, 0.28), 0 0 20px rgba(200, 168, 75, 0.12);
 }
 
 .inner {
