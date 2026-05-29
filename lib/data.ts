@@ -30,7 +30,7 @@ const projectData: Project[] = [
     tech: ['React', 'TypeScript', 'Firebase', 'Google Maps API', 'Express.js'],
     demoLink: 'https://cornellguessr.vercel.app/',
     demoLabel: 'Live site',
-    githubLink: "https://github.com/gordonm0253/cuttc",
+    githubLink: "https://github.com/carlhuu/CornellGuessr",
     featured: false,
   },
   {
