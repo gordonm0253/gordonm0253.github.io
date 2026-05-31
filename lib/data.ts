@@ -67,9 +67,9 @@ const projectData: Project[] = [
     featured: false
   },
   {
-    name: "Class Notes",
-    desc: "Assortment of notes for different Cornell CS classes",
-    longDesc: "Assortment of notes for different Cornell CS classes",
+    name: "CS Notes",
+    desc: "Compilation of notes for different Cornell CS classes",
+    longDesc: "Compilation of notes for different Cornell CS classes",
     tech: ["React.js", "HTML/CSS"],
     demoLink: "https://gordonm0253.github.io/cs-notes/",
     demoLabel: "Live Site",
