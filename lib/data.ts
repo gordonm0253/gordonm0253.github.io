@@ -43,6 +43,14 @@ const projectData: Project[] = [
     featured: false,
   },
   {
+    name: "CSES Solutions",
+    desc: 'Collection of Java solutions to different algorithm problems in CSES Problem Set.',
+    longDesc: 'Collection of Java solutions to different algorithm problems in CSES Problem Set, including dynamic programming and graph traversal algorithms.',
+    tech: ["Java"],
+    githubLink: "https://github.com/gordonm0253/cses",
+    featured: false,
+  },
+  {
     name: 'Critter World',
     desc: 'Multithreaded simulation where programmable critters eat, fighting, and evolve on a hex grid.',
     longDesc: 'Multithreaded simulation where programmable critters eat, fighting, and evolve on a hex grid.',
