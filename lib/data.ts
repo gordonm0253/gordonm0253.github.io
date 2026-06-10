@@ -44,9 +44,9 @@ const projectData: Project[] = [
   },
   {
     name: "CSES Solutions",
-    desc: 'Collection of Java solutions to different algorithm problems in CSES Problem Set.',
+    desc: 'Collection of Java, C++ solutions to different algorithm problems in CSES Problem Set.',
     longDesc: 'Collection of Java solutions to different algorithm problems in CSES Problem Set, including dynamic programming and graph traversal algorithms.',
-    tech: ["Java"],
+    tech: ['Java', 'C++'],
     githubLink: "https://github.com/gordonm0253/cses",
     featured: false,
   },
@@ -59,8 +59,8 @@ const projectData: Project[] = [
   },
   {
     name: 'Napify',
-    desc: 'Beli-like app for Cornell campus nap spots. Created during Spring26 AppDev Hack Challenge.',
-    longDesc: 'Beli-like app for Cornell campus nap spots. Created during Spring26 AppDev Hack Challenge.',
+    desc: 'Beli-like app for Cornell campus nap spots. Won best UI during Spring 2026 AppDev Hack Challenge.',
+    longDesc: 'Beli-like app for Cornell campus nap spots. Won best UI during Spring 2026 AppDev Hack Challenge.',
     tech: ['Swift', 'Python', 'Flask', 'SQLAlchemy'],
     githubLink: 'https://github.com/gordonm0253/napify',
     featured: false,
