@@ -60,14 +60,14 @@ export default function HeroSection({ opacity, translateY }: Props) {
               <li>
                 Researcher at the{' '}
                 <a href="https://aprilweilab.github.io/" target="_blank" rel="noopener noreferrer" className={styles.link}>Wei Lab</a>,
-                where I build scalable pipelines for genomic analysis and local ancestry inference.
+                where I build scalable pipelines for local ancestry inference.
               </li>
               <li>
-                Teaching Assistant for <a href="https://courses.cs.cornell.edu/cs4820/2026sp/" target="_blank" rel="noopener noreferrer" className={styles.link}>CS 4820</a>, configuring autograders and running office hours and discussion sections.
+                Teaching Assistant for <a href="https://courses.cs.cornell.edu/cs4820/2026sp/" target="_blank" rel="noopener noreferrer" className={styles.link}>CS 4820</a>, running office hours, discussion sections, and exam review sessions.
               </li>
               <li>
                 Software Developer for <a href="https://cornellnexus.com" target="_blank" rel="noopener noreferrer" className={styles.link}>Cornell Nexus</a>,
-                working on autonomous docking and parking routines with CV and ROS2.
+                working on autonomous docking routines with ROS2.
               </li>
             </ul>
           </div>
