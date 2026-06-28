@@ -45,3 +45,23 @@ body {
   background: rgba(200, 168, 75, 0.3);
   color: var(--text-light);
 }
+
+.ripple {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  background: var(--gold-faint);
+  pointer-events: none;
+  z-index: 9999;
+  transform: scale(0);
+  animation: ripple 0.5s ease-out forwards;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
