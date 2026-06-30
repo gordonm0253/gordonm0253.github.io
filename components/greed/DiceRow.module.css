@@ -1,0 +1,79 @@
+.row {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.die {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  background: var(--card-bg);
+  border: 1.5px solid rgba(201, 166, 74, 0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s, background 0.2s;
+  position: relative;
+  user-select: none;
+}
+
+.svg {
+  width: 52px;
+  height: 52px;
+}
+
+.pip {
+  fill: var(--text-muted);
+  transition: fill 0.2s;
+}
+
+/* States */
+.idle .pip { fill: rgba(138, 180, 212, 0.45); }
+
+.scoring {
+  border-color: var(--gold-dim);
+  box-shadow: 0 0 10px rgba(201, 166, 74, 0.2);
+}
+.scoring .pip { fill: var(--gold); }
+
+.kept {
+  border-color: var(--gold);
+  background: rgba(201, 166, 74, 0.1);
+  box-shadow: 0 0 14px rgba(201, 166, 74, 0.28);
+}
+.kept .pip { fill: var(--gold-bright); }
+
+.bust {
+  border-color: rgba(180, 60, 60, 0.5);
+  background: rgba(120, 30, 30, 0.18);
+  opacity: 0.6;
+}
+.bust .pip { fill: rgba(200, 80, 80, 0.7); }
+
+.rolling {
+  border-color: rgba(138, 180, 212, 0.3);
+  opacity: 0.5;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold);
+  box-shadow: 0 6px 18px rgba(201, 166, 74, 0.22);
+}
+
+.clickable:focus-visible {
+  outline: none;
+  transform: translateY(-4px);
+  border-color: var(--gold-bright);
+}
+
+@media (max-width: 600px) {
+  .die { width: 52px; height: 52px; }
+  .svg { width: 42px; height: 42px; }
+}

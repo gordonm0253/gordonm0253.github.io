@@ -1,0 +1,472 @@
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 32px;
+  align-items: start;
+}
+
+.gameArea {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sectionTitle {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 3px;
+  margin: 0;
+}
+
+.subtitle {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 16px;
+  color: var(--text-muted);
+  margin: -12px 0 0;
+  font-style: italic;
+}
+
+/* How to Play */
+.howTo {
+  border: 1px solid rgba(201, 166, 74, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.howToToggle {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 11px 16px;
+  background: rgba(201, 166, 74, 0.07);
+  border: none;
+  cursor: pointer;
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  transition: background 0.2s;
+}
+
+.howToToggle:hover { background: rgba(201, 166, 74, 0.13); }
+
+.chevron {
+  font-size: 14px;
+  transition: transform 0.25s;
+  display: inline-block;
+}
+.chevronOpen { transform: rotate(180deg); }
+
+.howToBody {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: rgba(8, 12, 28, 0.5);
+}
+
+.howToStep {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 15px;
+  color: var(--text-light);
+  line-height: 1.5;
+}
+
+.howToNum {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gold);
+  background: rgba(201, 166, 74, 0.12);
+  border: 1px solid rgba(201, 166, 74, 0.3);
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.colorGold { color: var(--gold-bright); }
+.colorMuted { color: var(--text-muted); }
+.colorRed { color: rgba(220, 80, 80, 0.9); }
+
+.howToChoices {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-left: 34px;
+}
+
+.howToChoice {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.howToChoiceLabel {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 11px;
+  letter-spacing: 1px;
+  font-weight: 700;
+  white-space: nowrap;
+  padding-top: 2px;
+  min-width: 110px;
+}
+
+.howToGoal {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 14px;
+  color: var(--text-muted);
+  font-style: italic;
+  border-top: 1px solid rgba(201, 166, 74, 0.1);
+  padding-top: 10px;
+  margin-top: 2px;
+}
+
+.howToScoring {
+  border-top: 1px solid rgba(201, 166, 74, 0.1);
+  padding-top: 10px;
+}
+
+.howToScoringTitle {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--gold-dim);
+  margin-bottom: 8px;
+}
+
+.howToScoringGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 16px;
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.howToScoringGrid span:nth-child(even) {
+  color: var(--text-light);
+  font-style: italic;
+}
+
+/* Set-aside zone */
+.asideZone {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px 16px;
+  background: rgba(201, 166, 74, 0.06);
+  border: 1px solid rgba(201, 166, 74, 0.25);
+  border-radius: 8px;
+}
+
+.asideLabel {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  color: var(--gold);
+}
+
+.asideRound {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(201, 166, 74, 0.12);
+}
+
+.asideRoundLabel {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: var(--gold-dim);
+}
+
+/* Message bar */
+.messageBar {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 15px;
+  color: var(--text-light);
+  background: rgba(12, 20, 40, 0.6);
+  border: 1px solid rgba(201, 166, 74, 0.2);
+  border-radius: 6px;
+  padding: 10px 16px;
+  min-height: 42px;
+  line-height: 1.5;
+  transition: border-color 0.3s, background 0.3s;
+}
+
+.messageBarBust {
+  border-color: rgba(200, 60, 60, 0.45);
+  background: rgba(80, 20, 20, 0.3);
+}
+
+.messageBarBanked {
+  border-color: rgba(79, 168, 232, 0.35);
+  background: rgba(20, 40, 80, 0.3);
+}
+
+.diceZone {
+  padding: 16px 0 4px;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.diceZoneLabel {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  align-self: flex-start;
+}
+
+.dieLegend {
+  display: flex;
+  gap: 16px;
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 13px;
+}
+.legendKept { color: var(--gold-bright); }
+.legendScoring { color: var(--gold); }
+.legendIdle { color: rgba(138, 180, 212, 0.45); }
+
+.emptyDice {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.placeholderDie {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  border: 1.5px dashed rgba(201, 166, 74, 0.14);
+  background: rgba(12, 20, 40, 0.4);
+}
+
+.scoreBar {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.scoreItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.scoreLabel {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+}
+
+.scoreValue {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--gold-bright);
+  line-height: 1;
+}
+
+.scoreValueDim {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--gold-dim);
+  line-height: 1;
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+}
+
+.btn {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: var(--text-light);
+  background: rgba(201, 166, 74, 0.12);
+  border: 1px solid rgba(201, 166, 74, 0.4);
+  border-radius: 6px;
+  padding: 10px 28px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.btn:hover:not(:disabled) {
+  background: rgba(201, 166, 74, 0.22);
+  border-color: var(--gold);
+  color: var(--gold-bright);
+}
+
+.btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.btnBank {
+  background: rgba(79, 168, 232, 0.1);
+  border-color: rgba(79, 168, 232, 0.35);
+}
+
+.btnBank:hover:not(:disabled) {
+  background: rgba(79, 168, 232, 0.2);
+  border-color: var(--blue-crystal);
+  color: var(--blue-crystal);
+}
+
+.btnReroll {
+  background: rgba(180, 50, 50, 0.08);
+  border-color: rgba(200, 60, 60, 0.3);
+  color: rgba(220, 160, 160, 0.85);
+}
+
+.btnReroll:hover:not(:disabled) {
+  background: rgba(180, 50, 50, 0.18);
+  border-color: rgba(200, 60, 60, 0.6);
+  color: rgba(240, 180, 180, 1);
+}
+
+/* Sidebar */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: rgba(12, 20, 40, 0.5);
+  border: 1px solid rgba(201, 166, 74, 0.15);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.statBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.statLabel {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+}
+
+.statBig {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--gold-bright);
+  line-height: 1.1;
+}
+
+.statSub {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 13px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.historyHeader {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  border-top: 1px solid rgba(201, 166, 74, 0.12);
+  padding-top: 12px;
+  margin-top: 4px;
+}
+
+.historyList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 220px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold-dim) transparent;
+}
+
+.historyEmpty {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 13px;
+  color: rgba(138, 180, 212, 0.4);
+  font-style: italic;
+}
+
+.historyItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(201, 166, 74, 0.07);
+}
+
+.historyNum {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 10px;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+}
+
+.historyScore {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gold);
+}
+
+.historyBust .historyScore {
+  color: rgba(200, 80, 80, 0.8);
+}
+
+.resetBtn {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+  background: none;
+  border: 1px solid rgba(138, 180, 212, 0.2);
+  border-radius: 4px;
+  padding: 6px 10px;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.resetBtn:hover {
+  border-color: rgba(138, 180, 212, 0.5);
+  color: var(--text-light);
+}
+
+@media (max-width: 720px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    max-height: 240px;
+    overflow: hidden;
+  }
+}

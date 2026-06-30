@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(yarn next *)",
+      "Bash(npm run *)",
+      "Bash(rm -rf /Users/gmei0253/portfolio/.pnp.cjs /Users/gmei0253/portfolio/.pnp.loader.mjs /Users/gmei0253/portfolio/.yarn /Users/gmei0253/portfolio/yarn.lock)"
+    ],
+    "additionalDirectories": [
+      "/Users/gmei0253/portfolio"
+    ]
+  }
+}
