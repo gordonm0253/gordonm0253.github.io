@@ -16,7 +16,14 @@
       "Bash(node verify_dice.mjs)",
       "Bash(xargs kill)",
       "Bash(kill 69681)",
-      "Bash(lsof -i :3000 -sTCP:LISTEN)"
+      "Bash(lsof -i :3000 -sTCP:LISTEN)",
+      "Bash(node -e \"require.resolve\\('playwright'\\)\")",
+      "Bash(node screenshot.mjs)",
+      "Bash(pkill -f screenshot.mjs)",
+      "Bash(jobs -l)",
+      "Bash(lsof -ti:3000)",
+      "Bash(node hydration_check.mjs)",
+      "Bash(lsof -ti:3000,3001)"
     ],
     "additionalDirectories": [
       "/Users/gmei0253/portfolio"

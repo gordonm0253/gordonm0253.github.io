@@ -5,6 +5,8 @@ import styles from './ProjectsSection.module.css';
 import NightMarketCard from './NightMarketCard';
 import { projects } from '@/lib/data';
 import type { Project } from '@/lib/data';
+import { assignRandomCrystalColors, getProjectCrystalColor } from '@/lib/projectColors';
+import type { CrystalColor } from '@/lib/projectColors';
 
 interface Props {
   opacity: number;
@@ -44,6 +46,7 @@ function ActionLink({
 export default function ProjectsSection({ opacity, translateY, scrollY, onOverflowChange }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const cardRailRef = useRef<HTMLDivElement>(null);
   const ordered = useMemo(() => [...projects].sort(compareFeaturedProjects), []);
   const [selectedName, setSelectedName] = useState(ordered[0]?.name);
   const selected = ordered.find((p) => p.name === selectedName) ?? ordered[0];
@@ -51,6 +54,35 @@ export default function ProjectsSection({ opacity, translateY, scrollY, onOverfl
     selected.demoLink ? { href: selected.demoLink, label: selected.demoLabel ?? 'Demo' } : null,
     selected.githubLink ? { href: selected.githubLink, label: 'Github' } : null,
   ].filter((action): action is { href: string; label: string } => action !== null);
+
+  const [columns, setColumns] = useState<number | null>(null);
+
+  useEffect(() => {
+    const railEl = cardRailRef.current;
+    if (!railEl) return;
+
+    function measureColumns() {
+      if (!railEl) return;
+      const columnCount = getComputedStyle(railEl).gridTemplateColumns.split(' ').length;
+      setColumns(columnCount);
+    }
+
+    measureColumns();
+    const observer = new ResizeObserver(measureColumns);
+    observer.observe(railEl);
+    return () => observer.disconnect();
+  }, []);
+
+  const cardColors = useMemo(() => {
+    const byName = new Map<string, CrystalColor>();
+    if (columns === null) {
+      ordered.forEach((p, i) => byName.set(p.name, p.crystalColor ?? getProjectCrystalColor(i)));
+      return byName;
+    }
+    const palettes = assignRandomCrystalColors(ordered.length, columns);
+    ordered.forEach((p, i) => byName.set(p.name, p.crystalColor ?? palettes[i]));
+    return byName;
+  }, [ordered, columns]);
 
   useEffect(() => {
     if (ref.current) {
@@ -105,7 +137,7 @@ export default function ProjectsSection({ opacity, translateY, scrollY, onOverfl
 
             <p className={styles.instructions}>Select a card to focus it. Click again to reveal details.</p>
 
-            <div className={styles.cardRail}>
+            <div ref={cardRailRef} className={styles.cardRail}>
               {ordered.map((p) => (
                 <NightMarketCard
                   key={p.name}
@@ -113,7 +145,7 @@ export default function ProjectsSection({ opacity, translateY, scrollY, onOverfl
                   name={p.name}
                   desc={p.desc}
                   tech={p.tech}
-                  crystalColor={p.crystalColor}
+                  crystalColor={cardColors.get(p.name)!}
                   featured={p.name === selected.name}
                   active={p.name === selected.name}
                   onSelect={() => setSelectedName(p.name)}

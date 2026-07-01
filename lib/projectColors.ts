@@ -14,3 +14,36 @@ const PALETTES: readonly CrystalColor[] = [
 export function getProjectCrystalColor(index: number): CrystalColor {
   return PALETTES[index % PALETTES.length];
 }
+
+function shuffle<T>(items: readonly T[]): T[] {
+  const result = [...items];
+  for (let i = result.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+}
+
+/**
+ * Randomly assigns a palette to each item such that no two cards in the
+ * same row (left neighbor) or same column (directly above) share a color.
+ * Falls back to any non-repeating palette if the grid is narrower than the
+ * available palette count.
+ */
+export function assignRandomCrystalColors(count: number, columns: number): CrystalColor[] {
+  const cols = Math.max(1, columns);
+  const assigned: CrystalColor[] = [];
+
+  for (let i = 0; i < count; i += 1) {
+    const left = i % cols !== 0 ? assigned[i - 1] : undefined;
+    const above = i - cols >= 0 ? assigned[i - cols] : undefined;
+
+    const candidates = shuffle(PALETTES).filter(
+      (palette) => palette !== left && palette !== above
+    );
+
+    assigned.push(candidates[0] ?? shuffle(PALETTES)[0]);
+  }
+
+  return assigned;
+}
