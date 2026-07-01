@@ -1,9 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import styles from './GameSection.module.css';
 import DiceRow, { type DieState } from './DiceRow';
 import { rollDice, scoreDice, isBust } from '@/lib/greed';
+
+const ROLL_ANIM_MS = 500;
+const ROLL_ANIM_TICK_MS = 80;
 
 function HowToPlay() {
   const [open, setOpen] = useState(true);
@@ -83,6 +86,13 @@ export default function GameSection() {
   const [asideRounds, setAsideRounds] = useState<AsideRound[]>([]);
   const [history, setHistory] = useState<TurnRecord[]>([]);
   const [lastBanked, setLastBanked] = useState(0);
+  const [isRolling, setIsRolling] = useState(false);
+  const [rollingDice, setRollingDice] = useState<number[]>([]);
+  const rollTickRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  useEffect(() => () => {
+    if (rollTickRef.current) clearInterval(rollTickRef.current);
+  }, []);
 
   const turnTotal = asideRounds.reduce((s, r) => s + r.points, 0);
 
@@ -95,6 +105,7 @@ export default function GameSection() {
   const runningAvg = avg(history);
 
   const statusMessage = (): string => {
+    if (isRolling) return 'Rolling…';
     if (phase === 'start') return 'Roll to begin your turn.';
     if (phase === 'bust') return '💥 Bust — no scoring dice. Turn ends with 0 points.';
     if (phase === 'banked') return `✓ Banked ${lastBanked} pts! Press New Turn to go again.`;
@@ -104,16 +115,30 @@ export default function GameSection() {
 
   const doRoll = (count: number, nextAsideRounds: AsideRound[]) => {
     const rolled = rollDice(count);
-    if (isBust(rolled)) {
+
+    setAsideRounds(nextAsideRounds);
+    setIsRolling(true);
+    setRollingDice(rollDice(count));
+
+    if (rollTickRef.current) clearInterval(rollTickRef.current);
+    rollTickRef.current = setInterval(() => {
+      setRollingDice(rollDice(count));
+    }, ROLL_ANIM_TICK_MS);
+
+    setTimeout(() => {
+      if (rollTickRef.current) {
+        clearInterval(rollTickRef.current);
+        rollTickRef.current = null;
+      }
+      setIsRolling(false);
       setActiveDice(rolled);
-      setAsideRounds(nextAsideRounds);
-      setPhase('bust');
-      setHistory(h => [...h, { score: 0, bust: true }]);
-    } else {
-      setActiveDice(rolled);
-      setAsideRounds(nextAsideRounds);
-      setPhase('rolled');
-    }
+      if (isBust(rolled)) {
+        setPhase('bust');
+        setHistory(h => [...h, { score: 0, bust: true }]);
+      } else {
+        setPhase('rolled');
+      }
+    }, ROLL_ANIM_MS);
   };
 
   const handleRoll = () => doRoll(6, []);
@@ -193,7 +218,15 @@ export default function GameSection() {
 
         {/* Active dice zone */}
         <div className={styles.diceZone}>
-          {activeDice.length === 0 ? (
+          {isRolling ? (
+            <>
+              <div className={styles.diceZoneLabel}>Rolling…</div>
+              <DiceRow
+                dice={rollingDice}
+                states={rollingDice.map(() => 'rolling' as DieState)}
+              />
+            </>
+          ) : activeDice.length === 0 ? (
             <div className={styles.emptyDice}>
               {[1,2,3,4,5,6].map(i => (
                 <div key={i} className={styles.placeholderDie} />
@@ -237,13 +270,13 @@ export default function GameSection() {
 
         {/* Controls */}
         <div className={styles.controls}>
-          {phase === 'start' && (
+          {!isRolling && phase === 'start' && (
             <button className={styles.btn} onClick={handleRoll}>Roll</button>
           )}
-          {(phase === 'bust' || phase === 'banked') && (
+          {!isRolling && (phase === 'bust' || phase === 'banked') && (
             <button className={styles.btn} onClick={handleNewTurn}>New Turn</button>
           )}
-          {phase === 'rolled' && (
+          {!isRolling && phase === 'rolled' && (
             <>
               <button className={`${styles.btn} ${styles.btnBank}`} onClick={handleBank}>
                 Bank {totalIfBank} pts

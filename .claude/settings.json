@@ -3,7 +3,20 @@
     "allow": [
       "Bash(yarn next *)",
       "Bash(npm run *)",
-      "Bash(rm -rf /Users/gmei0253/portfolio/.pnp.cjs /Users/gmei0253/portfolio/.pnp.loader.mjs /Users/gmei0253/portfolio/.yarn /Users/gmei0253/portfolio/yarn.lock)"
+      "Bash(rm -rf /Users/gmei0253/portfolio/.pnp.cjs /Users/gmei0253/portfolio/.pnp.loader.mjs /Users/gmei0253/portfolio/.yarn /Users/gmei0253/portfolio/yarn.lock)",
+      "Skill(run)",
+      "Skill(run:*)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000/greed)",
+      "Bash(npx --yes playwright --version)",
+      "Bash(npm ls *)",
+      "Bash(npm init *)",
+      "Bash(npm install *)",
+      "Read(//tmp/**)",
+      "Bash(npx playwright *)",
+      "Bash(node verify_dice.mjs)",
+      "Bash(xargs kill)",
+      "Bash(kill 69681)",
+      "Bash(lsof -i :3000 -sTCP:LISTEN)"
     ],
     "additionalDirectories": [
       "/Users/gmei0253/portfolio"

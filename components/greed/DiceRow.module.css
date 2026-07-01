@@ -54,7 +54,23 @@
 
 .rolling {
   border-color: rgba(138, 180, 212, 0.3);
-  opacity: 0.5;
+  animation: diceShake 0.35s ease-in-out infinite;
+}
+.rolling .pip { fill: rgba(138, 180, 212, 0.6); }
+
+@keyframes diceShake {
+  0% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(-12deg) scale(1.05); }
+  50% { transform: rotate(0deg) scale(0.95); }
+  75% { transform: rotate(12deg) scale(1.05); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rolling {
+    animation: none;
+    opacity: 0.6;
+  }
 }
 
 .clickable {
