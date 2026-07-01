@@ -87,9 +87,17 @@ const projectData: Project[] = [
     name: 'Greed',
     desc: 'Interactive dice game with a strategy simulator. Play Greed yourself and design your custom strategy.',
     longDesc: 'Interactive Greed dice game with two modes: play the game yourself (maximizing average score per turn), or use the Strategy Lab to define threshold-based rules and simulate 10,000 turns to compare expected value and bust rates.',
-    tech: ['Next.js', 'TypeScript', 'CSS Modules'],
+    tech: ['Next.js', 'TypeScript', 'HTML/CSS'],
     demoLink: '/greed',
     demoLabel: 'Play',
+    featured: false,
+  },
+  {
+    name: 'Portfolio',
+    desc: 'The site that you are on right now! Showcasing some of my projects and experience.',
+    longDesc: 'The site that you are on right now! Showcasing some of my projects and experience.',
+    tech: ['Next.js', 'TypeScript', 'CSS'],
+    githubLink: 'https://github.com/gordonm0253/gordonm0253.github.io',
     featured: false,
   },
 ];
