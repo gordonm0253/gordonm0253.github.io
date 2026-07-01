@@ -81,7 +81,7 @@ const projectData: Project[] = [
     tech: ["React.js", "HTML/CSS"],
     demoLink: "https://gordonm0253.github.io/cs-notes/",
     demoLabel: "Live Site",
-    featured: false
+    featured: false,
   },
   {
     name: 'Greed',
