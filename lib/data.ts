@@ -65,38 +65,12 @@ const projectData: Project[] = [
     featured: false,
   },
   {
-    name: "GD Visualizer",
-    desc: "Visualizer for different gradient descent methods, such as SGD, SGD w/ momentum, and Adam.",
-    longDesc: "Visualizer for different gradient descent methods, such as SGD, SGD w/ momentum, and Adam.",
-    tech: ["JavaScript", "HTML/CSS"],
-    demoLink: "https://gordonm0253.github.io/optimization-demo/",
-    demoLabel: "Live Site",
-    featured: false
-  },
-  {
     name: "CS Notes",
     desc: "Compilation of notes for different Cornell CS classes",
     longDesc: "Compilation of notes for different Cornell CS classes",
     tech: ["React.js", "HTML/CSS"],
     demoLink: "https://gordonm0253.github.io/cs-notes/",
     demoLabel: "Live Site",
-    featured: false,
-  },
-  {
-    name: 'Greed',
-    desc: 'Interactive dice game with a strategy simulator. Play Greed yourself and design your custom strategy.',
-    longDesc: 'Interactive Greed dice game with two modes: play the game yourself (maximizing average score per turn), or use the Strategy Lab to define threshold-based rules and simulate 10,000 turns to compare expected value and bust rates.',
-    tech: ['Next.js', 'TypeScript', 'HTML/CSS'],
-    demoLink: '/greed',
-    demoLabel: 'Play',
-    featured: false,
-  },
-  {
-    name: 'Portfolio',
-    desc: 'The site that you are on right now! Showcasing some of my projects and experience.',
-    longDesc: 'The site that you are on right now! Showcasing some of my projects and experience.',
-    tech: ['Next.js', 'TypeScript', 'CSS'],
-    githubLink: 'https://github.com/gordonm0253/gordonm0253.github.io',
     featured: false,
   },
 ];
