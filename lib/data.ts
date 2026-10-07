@@ -14,13 +14,23 @@ export type Project = {
 
 const projectData: Project[] = [
   {
+  name: 'Lotus Roots',
+  desc: 'AI-powered karaoke app that helps users learn Mandarin through music, with word-by-word pronunciation feedback and synchronized lyrics.',
+  longDesc: 'Learn Mandarin through the songs you love. Lotus Roots uses local Whisper speech recognition to provide pronunciation feedback as you practice lyrics line by line, with focused word practice and an immersive karaoke mode. Built during MHacks 2026.',
+  tech: ['React', 'TypeScript', 'TailwindCSS', 'Python', 'FastAPI', 'Whisper', 'PyTorch'],
+  demoLink: 'https://devpost.com/software/lotus-roots?ref_content=my-projects-tab&ref_feature=my_projects',
+  githubLink: "https://github.com/huamichael/lotus-roots",
+  demoLabel: 'Devpost',
+  featured: true,
+  },
+  {
     name: 'Meridian',
     desc: 'Group trip planner that uses AI to scrape conversation history and generate full itineraries. Built at Yale Hacks 2026.',
     longDesc: 'Group trip planner that uses AI to scrape conversation history and generate full itineraries. Built at Yale Hacks 2026.',
     tech: ['Next.js', 'TypeScript', 'MongoDB', 'Prisma', 'TailwindCSS'],
     demoLink: 'https://devpost.com/software/meridian-geqs1c',
     demoLabel: 'Devpost',
-    featured: true,
+    featured: false,
   },
   {
     name: 'Cornell Guessr',
